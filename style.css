@@ -1,0 +1,25 @@
+:root {
+  --nude: #eab676;
+  --gray: #303030;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  color: var(--gray);
+}
+
+body {
+  background-color: var(--nude);
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+header p {
+  font-size: 2rem;
+}
