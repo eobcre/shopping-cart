@@ -5,153 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script src="app.js" defer></script>
     <title>Farmer's Market</title>
   </head>
   <body>
     <header>
-      <p>Farmer's Market</p>
-      <img src="./img/icon-cart.png" alt="Icon" width="60" height="60" />
+      <h1>Farmer's Market</h1>
+      <div class="cart">
+        <img src="./img/icon-cart.png" alt="Icon" width="60" height="60" />
+        <div class="cartAmount">0</div>
+      </div>
     </header>
 
-    <div class="main">
-      <div class="item">
-        <figure>
-          <img src="./img/apple.svg" alt="Icon" width="100" height="100" />
-          <figcaption>
-            <h2>Apple</h2>
-            <p>$3.00</p>
-          </figcaption>
-        </figure>
-        <button class="cart-btn">Add To Cart</button>
-        <a href="confirm.html"><button>Buy Now</button></a>
-      </div>
-      <!-- /.item -->
-      <div class="item">
-        <figure>
-          <img src="./img/banana.svg" alt="Icon" width="100" height="100" />
-          <figcaption>
-            <h2>Banana</h2>
-            <p>$3.00</p>
-          </figcaption>
-        </figure>
-        <button class="cart-btn">Add To Cart</button>
-        <a href="confirm.html"><button>Buy Now</button></a>
-      </div>
-      <!-- /.item -->
-      <div class="item">
-        <figure>
-          <img src="./img/lemon.svg" alt="Icon" width="100" height="100" />
-          <figcaption>
-            <h2>Lemon</h2>
-            <p>$1.00</p>
-          </figcaption>
-        </figure>
-        <button class="cart-btn">Add To Cart</button>
-        <a href="confirm.html"><button>Buy Now</button></a>
-      </div>
-      <!-- /.item -->
-      <div class="item">
-        <figure>
-          <img src="./img/brocolli.svg" alt="Icon" width="100" height="100" />
-          <figcaption>
-            <h2>Brocolli</h2>
-            <p>$3.00</p>
-          </figcaption>
-        </figure>
-        <button class="cart-btn">Add To Cart</button>
-        <a href="confirm.html"><button>Buy Now</button></a>
-      </div>
-      <!-- /.item -->
-      <div class="item">
-        <figure>
-          <img src="./img/carrot.svg" alt="Icon" width="100" height="100" />
-          <figcaption>
-            <h2>Carrot</h2>
-            <p>$2.00</p>
-          </figcaption>
-        </figure>
-        <button class="cart-btn">Add To Cart</button>
-        <a href="confirm.html"><button>Buy Now</button></a>
-      </div>
-      <!-- /.item -->
-      <div class="item">
-        <figure>
-          <img src="./img/corn.svg" alt="Icon" width="100" height="100" />
-          <figcaption>
-            <h2>Corn</h2>
-            <p>$4.00</p>
-          </figcaption>
-        </figure>
-        <button class="cart-btn">Add To Cart</button>
-        <a href="confirm.html"><button>Buy Now</button></a>
-      </div>
-      <!-- /.item -->
-      <div class="item">
-        <figure>
-          <img
-            src="./img/green-onion.svg"
-            alt="Icon"
-            width="100"
-            height="100"
-          />
-          <figcaption>
-            <h2>Green Onion</h2>
-            <p>$3.00</p>
-          </figcaption>
-        </figure>
-        <button class="cart-btn">Add To Cart</button>
-        <a href="confirm.html"><button>Buy Now</button></a>
-      </div>
-      <!-- /.item -->
-      <div class="item">
-        <figure>
-          <img src="./img/lettuce.svg" alt="Icon" width="100" height="100" />
-          <figcaption>
-            <h2>Lettuce</h2>
-            <p>$5.00</p>
-          </figcaption>
-        </figure>
-        <button class="cart-btn">Add To Cart</button>
-        <a href="confirm.html"><button>Buy Now</button></a>
-      </div>
-      <!-- /.item -->
-      <div class="item">
-        <figure>
-          <img src="./img/onion.svg" alt="Icon" width="100" height="100" />
-          <figcaption>
-            <h2>Onion</h2>
-            <p>$2.00</p>
-          </figcaption>
-        </figure>
-        <button class="cart-btn">Add To Cart</button>
-        <a href="confirm.html"><button>Buy Now</button></a>
-      </div>
-      <!-- /.item -->
-      <div class="item">
-        <figure>
-          <img src="./img/potato.svg" alt="Icon" width="100" height="100" />
-          <figcaption>
-            <h2>Potato</h2>
-            <p>$3.00</p>
-          </figcaption>
-        </figure>
-        <button class="cart-btn">Add To Cart</button>
-        <a href="confirm.html"><button>Buy Now</button></a>
-      </div>
-      <!-- /.item -->
-      <div class="item">
-        <figure>
-          <img src="./img/radish.svg" alt="Icon" width="100" height="100" />
-          <figcaption>
-            <h2>Radish</h2>
-            <p>$5.00</p>
-          </figcaption>
-        </figure>
-        <button class="cart-btn">Add To Cart</button>
-        <a href="confirm.html"><button>Buy Now</button></a>
-      </div>
-      <!-- /.item -->
-    </div>
+    <div id="main" class="main"></div>
     <!-- /.main -->
   </body>
 </html>
