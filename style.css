@@ -1,6 +1,7 @@
 :root {
   --nude: #eab676;
   --gray: #333333;
+  --red: #ef233c;
 }
 
 * {
@@ -19,6 +20,18 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 20px;
+}
+
+.cart {
+  position: relative;
+}
+
+.cartAmount {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1rem;
+  background-color: var(--red);
 }
 
 .main {
