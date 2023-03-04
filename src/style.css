@@ -22,6 +22,10 @@ header {
   padding: 20px;
 }
 
+header a {
+  text-decoration: none;
+}
+
 .cart {
   position: relative;
 }
