@@ -123,11 +123,21 @@ const clickDecrement = (id) => {
     search.item -= 1;
   }
   // console.log(storage);
-  update();
+  update(id);
 };
 
-// Updates
+// Updates on console
 const update = (id) => {
   const search = storage.find((check) => check.id === id);
-  console.log(search.item);
+  // console.log(search.item);
+  updateCart();
+};
+
+// Update on cart
+const updateCart = () => {
+  const showCart = document.getElementById('cartAmount');
+  showCart.innerHTML = storage
+    .map((check) => check.item)
+    .reduce((acc, next) => acc + next, 0);
+  // console.log(storage.map((check) => check.item).reduce((acc, next) => acc + next, 0));
 };
