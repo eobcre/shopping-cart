@@ -70,6 +70,9 @@ const itemList = [
   },
 ];
 
+// Store data selected
+const storage = [];
+
 const generateMain = () => {
   return (main.innerHTML = itemList
     .map((item) => {
@@ -83,8 +86,8 @@ const generateMain = () => {
             <p>$ ${price}</p>
         </figcaption>
         </figure>
-        <button class="cart-btn">Add To Cart</button>
-        <a href="confirm.html"><button>Remove</button></a>
+        <button onclick='clickIncrement(${id})' class="cart-btn">Add To Cart</button>
+        <button onclick='clickDecrement(${id})'>Remove</button>
     </div>
     `;
     })
@@ -92,3 +95,39 @@ const generateMain = () => {
 };
 
 generateMain();
+
+// Increment
+const clickIncrement = (id) => {
+  // check id exist or not === id selected
+  const search = storage.find((check) => check.id === id);
+  // if the item does not exist then push
+  if (search === undefined) {
+    storage.push({
+      id: id,
+      item: 1,
+    });
+  } else {
+    search.item += 1;
+  }
+  // console.log(storage);
+  update(id);
+};
+
+// Decrement
+const clickDecrement = (id) => {
+  // check id exist or not === id selected
+  const search = storage.find((check) => check.id === id);
+  // Stop going under 1
+  if (search.item === 0) return;
+  else {
+    search.item -= 1;
+  }
+  // console.log(storage);
+  update();
+};
+
+// Updates
+const update = (id) => {
+  const search = storage.find((check) => check.id === id);
+  console.log(search.item);
+};
