@@ -1,12 +1,14 @@
 const main = document.getElementById('main');
 
 // Store data selected
-const storage = [];
+const storage = JSON.parse(localStorage.getItem('data')) || [];
 
+// Generate template
 const generateMain = () => {
   return (main.innerHTML = itemList
     .map((item) => {
       const { id, name, price, img } = item;
+
       return `
     <div id=${id} class="item">
         <figure>
@@ -39,7 +41,8 @@ const clickIncrement = (id) => {
   } else {
     search.item += 1;
   }
-  // console.log(storage);
+  // Local storage settings
+  localStorage.setItem('data', JSON.stringify(storage));
   update(id);
 };
 
@@ -54,14 +57,14 @@ const clickDecrement = (id) => {
   else {
     search.item -= 1;
   }
-  // console.log(storage);
+  // Local storage settings
+  localStorage.setItem('data', JSON.stringify(storage));
   update(id);
 };
 
 // Updates on console
 const update = (id) => {
   const search = storage.find((check) => check.id === id);
-  // console.log(search.item);
   updateCart();
 };
 
@@ -73,3 +76,6 @@ const updateCart = () => {
     .reduce((acc, next) => acc + next, 0);
   // console.log(storage.map((check) => check.item).reduce((acc, next) => acc + next, 0));
 };
+
+// Still display amount on cart icon when page updated
+updateCart();
