@@ -9,19 +9,26 @@ const generateMain = () => {
     .map((item) => {
       const { id, name, price, img } = item;
 
-      return `
-    <div id=${id} class="item">
-        <figure>
+      // const search = storage.find((x) => x.id === id) || [];
+      // search.item === undefined ? 0 : search.item;
+
+      const html = String.raw;
+
+      return html`
+        <div id=${id} class="item">
+          <figure>
             <img src=${img} alt="Icon" width="100" height="100" />
-        <figcaption>
-            <h2>${name}</h2>
-            <p>$${price.toFixed(2)}</p>
-        </figcaption>
-        </figure>
-        <button onclick='clickIncrement(${id})' class="cart-btn">Add To Cart</button>
-        <button onclick='clickDecrement(${id})'>Remove</button>
-    </div>
-    `;
+            <figcaption>
+              <h2>${name}</h2>
+              <p>$${price.toFixed(2)}</p>
+            </figcaption>
+          </figure>
+          <button onclick="clickIncrement(${id})" class="cart-btn">
+            Add To Cart
+          </button>
+          <button onclick="clickDecrement(${id})">Remove</button>
+        </div>
+      `;
     })
     .join(''));
 };
@@ -41,9 +48,10 @@ const clickIncrement = (id) => {
   } else {
     search.item += 1;
   }
+  update(id);
+
   // Local storage settings
   localStorage.setItem('data', JSON.stringify(storage));
-  update(id);
 };
 
 // Decrement
@@ -57,19 +65,23 @@ const clickDecrement = (id) => {
   else {
     search.item -= 1;
   }
+
+  update(id);
+
+  // storage = storage.filter((x) => x.item !== 0);
+
   // Local storage settings
   localStorage.setItem('data', JSON.stringify(storage));
-  update(id);
 };
 
 // Updates on console
 const update = (id) => {
   const search = storage.find((check) => check.id === id);
-  updateCart();
+  updateCal();
 };
 
-// Update on cart
-const updateCart = () => {
+// Calculate and update on cart
+const updateCal = () => {
   const showCart = document.getElementById('cartAmount');
   showCart.innerHTML = storage
     .map((check) => check.item)
@@ -78,4 +90,4 @@ const updateCart = () => {
 };
 
 // Still display amount on cart icon when page updated
-updateCart();
+updateCal();
