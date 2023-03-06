@@ -82,4 +82,9 @@ button {
 .template-inner h3 {
   letter-spacing: 1px;
   text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.template-inner button {
+  margin: 2rem;
 }
