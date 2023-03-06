@@ -73,3 +73,13 @@ button {
 .cart-btn {
   margin-right: 10px;
 }
+
+.template-inner {
+  text-align: center;
+  padding: 3rem;
+}
+
+.template-inner h3 {
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
