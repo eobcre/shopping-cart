@@ -74,8 +74,14 @@ button {
   margin-right: 10px;
 }
 
+/* Styles for confirm page */
+
 .template-inner {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
   padding: 3rem;
 }
 
