@@ -55,6 +55,7 @@ header a {
   padding: 1.5rem;
   border: 2px solid;
   border-radius: 5px;
+  margin-top: 30px;
 }
 
 .item h2 {
@@ -93,4 +94,10 @@ button {
 
 .template-inner button {
   margin: 2rem;
+}
+
+footer {
+  text-align: center;
+  margin-top: 30px;
+  padding: 50px;
 }
