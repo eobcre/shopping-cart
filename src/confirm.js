@@ -18,6 +18,27 @@ updateCal();
 
 const generateCartItems = () => {
   if (storage.length !== 0) {
+    return (shopping_bag.innerHTML = storage
+      .map((x) => {
+        let { id, item } = x;
+        let search = itemList.find((y) => y.id === id) || [];
+        const html = String.raw;
+        shopping_bag.innerHTML = ``;
+        return html`
+          <div class="cart-item">
+            <img src=${search.img} alt" ="Image" width='100' />
+            <div class="item-decription">
+              <h2>${search.name}</h2>
+              <p class="item-price">$${search.price.toFixed(2)}</p>
+              <div class="cart-button">
+                <button><i class="fas fa-plus"></i></button>
+                <button><i class="fas fa-minus"></i></button>
+              </div>
+            </div>
+          </div>
+        `;
+      })
+      .join(''));
   } else {
     const html = String.raw;
     shopping_bag.innerHTML = ``;
