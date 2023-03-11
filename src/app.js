@@ -1,10 +1,10 @@
-const main = document.getElementById('main');
+let main = document.getElementById('main');
 
-// Store data selected
-const storage = JSON.parse(localStorage.getItem('data')) || [];
+// store data selected
+let storage = JSON.parse(localStorage.getItem('data')) || [];
 
-// Generate template
-const generateMain = () => {
+// generate template
+let generateMain = () => {
   return (main.innerHTML = itemList
     .map((item) => {
       const { id, name, price, img } = item;
@@ -23,10 +23,10 @@ const generateMain = () => {
               <p>$${price.toFixed(2)}</p>
             </figcaption>
           </figure>
-          <button onclick="clickIncrement(${id})" class="cart-btn">
+          <button onclick="increment(${id})" class="cart-btn">
             Add To Cart
           </button>
-          <button onclick="clickDecrement(${id})">Remove</button>
+          <button onclick="decrement(${id})">Remove</button>
         </div>
       `;
     })
@@ -35,10 +35,10 @@ const generateMain = () => {
 
 generateMain();
 
-// Increment
-const clickIncrement = (id) => {
+// increment
+let increment = (id) => {
   // check id exist or not === id selected
-  const search = storage.find((check) => check.id === id);
+  let search = storage.find((check) => check.id === id);
   // if the item does not exist then push
   if (search === undefined) {
     storage.push({
@@ -54,13 +54,14 @@ const clickIncrement = (id) => {
   localStorage.setItem('data', JSON.stringify(storage));
 };
 
-// Decrement
-const clickDecrement = (id) => {
+// decrement
+let decrement = (id) => {
   // check id exist or not === id selected
-  const search = storage.find((check) => check.id === id);
+  let search = storage.find((x) => x.id === id);
+
   // if search is undefined do nothing
   if (search === undefined) return;
-  // Stop going under 1
+  // stop going under 1
   else if (search.item === 0) return;
   else {
     search.item -= 1;
@@ -68,19 +69,21 @@ const clickDecrement = (id) => {
 
   update(id);
 
-  // storage = storage.filter((x) => x.item !== 0);
+  // filter the ones that are item: number but not 0
+  storage = storage.filter((x) => x.item !== 0);
 
-  // Local storage settings
+  // local storage settings
+  // save the data in local storage
   localStorage.setItem('data', JSON.stringify(storage));
 };
 
-// Updates on console
+// updates on console
 const update = (id) => {
   const search = storage.find((check) => check.id === id);
   updateCal();
 };
 
-// Calculate and update on cart
+// calculate and update on cart
 const updateCal = () => {
   const showCart = document.getElementById('cartAmount');
   showCart.innerHTML = storage
@@ -89,5 +92,5 @@ const updateCal = () => {
   // console.log(storage.map((check) => check.item).reduce((acc, next) => acc + next, 0));
 };
 
-// Still display amount on cart icon when page updated
+// still display amount on cart icon when page updated
 updateCal();
