@@ -101,3 +101,23 @@ footer {
   margin-top: 30px;
   padding: 50px;
 }
+
+/* cart item styles */
+.cart-item {
+  display: flex;
+  gap: 4rem;
+  margin: auto;
+  border: solid;
+  border-radius: 5px;
+  padding: 2rem;
+  width: 80%;
+  margin-top: 2rem;
+}
+
+.item-price {
+  margin-top: 8px;
+}
+
+.button-container {
+  text-center
+}
