@@ -23,10 +23,7 @@ let generateMain = () => {
               <p>$${price.toFixed(2)}</p>
             </figcaption>
           </figure>
-          <button onclick="increment(${id})" class="cart-btn">
-            Add To Cart
-          </button>
-          <button onclick="decrement(${id})">Remove</button>
+          <button onclick="increment(${id})">Add To Cart</button>
         </div>
       `;
     })
