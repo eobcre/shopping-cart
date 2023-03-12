@@ -26,13 +26,16 @@ const generateCartItems = () => {
         shopping_bag.innerHTML = ``;
         return html`
           <div class="cart-item">
-            <img src=${search.img} alt" ="Image" width='100' />
+            <img src=${search.img} alt="Image" width="100" />
             <div class="item-decription">
               <h2>${search.name}</h2>
               <p class="item-price">$${search.price.toFixed(2)}</p>
-              <div class="cart-button">
-                <button><i class="fas fa-plus"></i></button>
-                <button><i class="fas fa-minus"></i></button>
+              <div class="buttons">
+                <i onclick="increment(${id})" class="bi bi-plus-circle"></i>
+                <div id=${id} class="count">
+                  ${search.item === undefined ? 0 : search.item}
+                </div>
+                <i decrement(${id}) class="bi bi-dash-circle"></i>
               </div>
             </div>
           </div>
