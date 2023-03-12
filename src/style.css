@@ -4,6 +4,7 @@
   --red: #ef233c;
 }
 
+/* reset */
 * {
   margin: 0;
   padding: 0;
@@ -26,6 +27,15 @@ header a {
   text-decoration: none;
 }
 
+footer {
+  text-align: center;
+  margin-top: 30px;
+  padding: 50px;
+}
+
+/* * * styles for main page * * */
+
+/* cart */
 .cart {
   position: relative;
 }
@@ -41,6 +51,7 @@ header a {
   cursor: pointer;
 }
 
+/* items */
 .main {
   display: flex;
   justify-content: center;
@@ -52,10 +63,11 @@ header a {
 
 .item {
   text-align: center;
-  padding: 1.5rem;
   border: 2px solid;
   border-radius: 5px;
+  width: 220px;
   margin-top: 30px;
+  padding: 1.5rem;
 }
 
 .item h2 {
@@ -63,6 +75,7 @@ header a {
 }
 
 .item p {
+  font-size: 18px;
   margin-top: 10px;
 }
 
@@ -71,11 +84,9 @@ button {
   padding: 4px;
 }
 
-.cart-btn {
-  margin-right: 10px;
-}
+/* * * styles for confirm page * * */
 
-/* Styles for confirm page */
+/* cart empty page */
 
 .template-inner {
   display: flex;
@@ -96,13 +107,9 @@ button {
   margin: 2rem;
 }
 
-footer {
-  text-align: center;
-  margin-top: 30px;
-  padding: 50px;
-}
+/* cart items page */
 
-/* cart item styles */
+/* cart item box */
 .cart-item {
   display: flex;
   gap: 4rem;
@@ -114,10 +121,26 @@ footer {
   margin-top: 2rem;
 }
 
+/* price */
 .item-price {
+  font-size: 18px;
   margin-top: 8px;
 }
 
-.button-container {
-  text-center
+/* counter */
+.buttons {
+  display: flex;
+  gap: 13px;
+  margin-top: 10px;
+}
+
+i {
+  font-size: 1.3rem;
+}
+
+/* * * breakpoints * * */
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1024px) {
 }
