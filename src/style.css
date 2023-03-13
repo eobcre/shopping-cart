@@ -14,6 +14,7 @@
 
 body {
   background-color: var(--nude);
+  min-height: 100vh;
 }
 
 header {
@@ -29,9 +30,10 @@ header a {
 
 footer {
   position: sticky;
+  top: 100vh;
   text-align: center;
   margin-top: 30px;
-  padding: 50px;
+  padding: 30px;
 }
 
 /* * * styles for main page * * */
