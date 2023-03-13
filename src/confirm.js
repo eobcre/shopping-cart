@@ -112,9 +112,12 @@ let totalAmount = () => {
     let amount = storage
       .map((x) => {
         let { item, id } = x;
+        // retrieve the first match
         let search = itemList.find((y) => y.id === id) || [];
+        // $3.00 * 4 items
         return item * search.price;
       })
+      // items + $3.00 * 4 items
       .reduce((x, y) => x + y, 0);
     // console.log(amount);
     price.innerHTML = `
