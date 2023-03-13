@@ -1,28 +1,28 @@
-const shopping_bag = document.getElementById('shopping-bag');
-const price = document.getElementById('price');
+let shopping_bag = document.getElementById('shopping-bag');
+let price = document.getElementById('price');
 
 // Store data selected
-const storage = JSON.parse(localStorage.getItem('data')) || [];
+let storage = JSON.parse(localStorage.getItem('data')) || [];
 
 // Calculate and update on cart
-const updateCal = () => {
-  const showCart = document.getElementById('cartAmount');
+let updateCal = () => {
+  let showCart = document.getElementById('cartAmount');
   showCart.innerHTML = storage
     .map((check) => check.item)
     .reduce((acc, next) => acc + next, 0);
   // console.log(storage.map((check) => check.item).reduce((acc, next) => acc + next, 0));
 };
 
-// Still display amount on cart icon when page updated
+// still show amount on cart icon when page updated
 updateCal();
 
-const generateCartItems = () => {
+let generateCartItems = () => {
   if (storage.length !== 0) {
     return (shopping_bag.innerHTML = storage
       .map((x) => {
         let { id, item } = x;
         let search = itemList.find((y) => y.id === id) || [];
-        const html = String.raw;
+        let html = String.raw;
         shopping_bag.innerHTML = ``;
         return html`
           <div class="cart-item">
@@ -32,10 +32,8 @@ const generateCartItems = () => {
               <p class="item-price">$${search.price.toFixed(2)}</p>
               <div class="buttons">
                 <i onclick="increment(${id})" class="bi bi-plus-circle"></i>
-                <div id=${id} class="count">
-                  ${search.item === undefined ? 0 : search.item}
-                </div>
-                <i decrement(${id}) class="bi bi-dash-circle"></i>
+                <div id=${id} class="count">${item}</div>
+                <i onclick="decrement(${id})" class="bi bi-dash-circle"></i>
               </div>
             </div>
           </div>
@@ -58,3 +56,72 @@ const generateCartItems = () => {
 };
 
 generateCartItems();
+
+// increment
+let increment = (id) => {
+  // check id exist or not === id selected
+  let search = storage.find((x) => x.id === id);
+  // if the item does not exist then push
+  if (search === undefined) {
+    storage.push({
+      id: id,
+      item: 1,
+    });
+  } else {
+    search.item += 1;
+  }
+  update(id);
+
+  // Local storage settings
+  localStorage.setItem('data', JSON.stringify(storage));
+};
+
+// decrement
+let decrement = (id) => {
+  // check id exist or not === id selected
+  let search = storage.find((x) => x.id === id);
+  // if search is undefined do nothing
+  if (search === undefined) return;
+  // stop going under 1
+  else if (search.item === 0) return;
+  else {
+    search.item -= 1;
+  }
+
+  update(id);
+
+  // filter the ones that are item: number but not 0
+  storage = storage.filter((x) => x.item !== 0);
+
+  generateCartItems();
+
+  // local storage settings
+  // save the data in local storage
+  localStorage.setItem('data', JSON.stringify(storage));
+};
+
+// updates on console and show
+let update = (id) => {
+  let search = storage.find((x) => x.id === id);
+  document.getElementById(id).innerHTML = search.item;
+  updateCal();
+};
+
+let totalAmount = () => {
+  if (storage.length !== 0) {
+    let amount = storage
+      .map((x) => {
+        let { item, id } = x;
+        let search = itemList.find((y) => y.id === id) || [];
+        return item * search.price;
+      })
+      .reduce((x, y) => x + y, 0);
+    // console.log(amount);
+    price.innerHTML = `
+    <h2>Total : $ ${amount.toFixed(2)}</h2>
+    <button class="checkout">Checkout</button>
+    `;
+  } else return;
+};
+
+totalAmount();
