@@ -21,15 +21,17 @@ let generateCartItems = () => {
     return (shopping_bag.innerHTML = storage
       .map((x) => {
         let { id, item } = x;
-        let search = itemList.find((y) => y.id === id) || [];
+        let search = data.find((y) => y.id === id) || [];
+        let { name, price, img } = search;
+        // template literal
         let html = String.raw;
         shopping_bag.innerHTML = ``;
         return html`
           <div class="cart-item">
-            <img src=${search.img} alt="Image" width="100" />
+            <img src=${img} alt="Image" width="100" />
             <div class="item-decription">
-              <h2>${search.name}</h2>
-              <p class="item-price">$${search.price.toFixed(2)}</p>
+              <h2>${name}</h2>
+              <p class="item-price">$${price.toFixed(2)}</p>
               <div class="buttons">
                 <i onclick="increment(${id})" class="bi bi-plus-circle"></i>
                 <div id=${id} class="count">${item}</div>
@@ -105,6 +107,7 @@ let update = (id) => {
   let search = storage.find((x) => x.id === id);
   document.getElementById(id).innerHTML = search.item;
   updateCal();
+  totalAmount();
 };
 
 let totalAmount = () => {
@@ -113,12 +116,12 @@ let totalAmount = () => {
       .map((x) => {
         let { item, id } = x;
         // retrieve the first match
-        let search = itemList.find((y) => y.id === id) || [];
-        // $3.00 * 4 items
+        let search = data.find((y) => y.id === id) || [];
+        // 4 items * $3.00
         return item * search.price;
       })
-      // items + $3.00 * 4 items
-      .reduce((x, y) => x + y, 0);
+      // items + 4 items * $3.00
+      .reduce((acc, cur) => acc + cur, 0);
     // console.log(amount);
     price.innerHTML = `
     <h2>Total : $ ${amount.toFixed(2)}</h2>
