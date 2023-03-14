@@ -1,5 +1,5 @@
 // Item list
-const itemList = [
+const data = [
   {
     id: 0,
     name: 'Apple',
