@@ -5,7 +5,7 @@ let storage = JSON.parse(localStorage.getItem('data')) || [];
 
 // generate template
 let generateMain = () => {
-  return (main.innerHTML = itemList
+  return (main.innerHTML = data
     .map((item) => {
       const { id, name, price, img } = item;
 
